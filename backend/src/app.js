@@ -1,5 +1,7 @@
 import express from "express";
+import mongoose from "mongoose";
 import routes from "./routes";
+//import cors from "cors";
 
 class App {
   constructor() {
@@ -7,6 +9,13 @@ class App {
 
     this.middlewares();
     this.routes();
+
+    mongoose.connect(
+      "mongodb+srv://omnistack:omnistack@cluster0-wvnqq.mongodb.net/omnistack?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true
+      }
+    );
   }
 
   middlewares() {
